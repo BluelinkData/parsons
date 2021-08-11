@@ -6,9 +6,7 @@ import json
 
 logger = logging.getLogger(__name__)
 
-# API_URL = 'https://api.bluelink.org/webhooks/'
-API_URL = 'https://api-user-dev.bluelink.org/webhooks/'
-#API_URL = 'http://127.0.0.1:5000/webhooks/'
+API_URL = 'https://api.bluelink.org/webhooks/'
 
 
 class Bluelink:
