@@ -26,6 +26,7 @@ To instantiate a class, you can either pass in the user and password token as ar
 BLUELINK_WEBHOOK_USER and BLUELINK_WEBHOOK_PASSWORD environment variables.
 
 .. code-block:: python
+
    from parsons.bluelink import Bluelink
 
    # First approach: Use API credentials via environmental variables
@@ -37,6 +38,7 @@ BLUELINK_WEBHOOK_USER and BLUELINK_WEBHOOK_PASSWORD environment variables.
 You can upsert Person data by directly using a Person object:
 
 .. code-block:: python
+
    from parsons.bluelink import Bluelink, Person, Identifier
 
    # create the person object
@@ -49,6 +51,7 @@ You can upsert Person data by directly using a Person object:
 You can bulk upsert person data via a Parsons Table by providing a function that takes a row and outputs a person:
 
 .. code-block:: python
+
    from parsons.bluelink import Bluelink, Person, Identifier
 
    # a function that takes a row and returns a Person
