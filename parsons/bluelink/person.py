@@ -40,8 +40,8 @@ class Person(object):
             additional custom data. must be json serializable
     """
     def __init__(self, identifiers, given_name=None, family_name=None, phones=None, emails=None,
-                 addresses=None, tags=None, flags=None, employer=None, employer_address=None, occupation=None,
-                 scores=None, birthdate=None, details=None):
+                 addresses=None, tags=None, flags=None, employer=None, employer_address=None,
+                 occupation=None, scores=None, birthdate=None, details=None):
 
         if not identifiers:
             raise Exception("Person requires list of Identifiers with at least 1 Identifier")
@@ -102,8 +102,9 @@ class Identifier(object):
     `Args:`
         source: str
             External system to which this ID belongs, e.g., “VAN:myCampaign”.
-            Bluelink has standardized strings for source. Using these will allow Lightrail to correctly understand the
-            external IDs you add. source (unlike identifier) is case insensitive.
+            Bluelink has standardized strings for source. Using these will allow
+            Lightrail to correctly understand the external IDs you add. source
+            (unlike identifier) is case insensitive.
             examples: BLUELINK, PDI, SALESFORCE, VAN:myCampaign, VAN:myVoters
         identifier: str
             Case-sensitive ID in the external system
@@ -197,8 +198,8 @@ class Phone(object):
         details: dict
             Additional data dictionary. Must be json serializable
     """
-    def __init__(self, number, primary=None, description=None, type=None, country=None, sms_capable=None,
-                 do_not_call=None, details=None):
+    def __init__(self, number, primary=None, description=None, type=None, country=None,
+                 sms_capable=None, do_not_call=None, details=None):
         self.number = number
         self.primary = primary
         self.description = description
@@ -239,4 +240,3 @@ class Score(object):
         self.score = score
         self.score_type = score_type
         self.source = source
-
