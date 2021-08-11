@@ -14,8 +14,6 @@ class Person(object):
         identifiers: list[Identifier]
             A list of Identifier objects.
             A Person must have at least 1 identifier
-        source:
-            Original source of this Person object
         given_name: str
             First name / given name
         family_name: str
@@ -28,8 +26,6 @@ class Person(object):
             A list of Address objects representing postal addresses
         tags: list[Tag]
             Simple tags that apply to the person, eg DONOR.
-        flags: list[Flag]
-            Similar to tags but with more configuration options.
         employer: str
             Name of the persons employer
         employer_address: Address
@@ -224,26 +220,6 @@ class Tag(object):
     """
     def __init__(self, tag):
         self.tag = tag
-
-
-class Flag(object):
-    """
-    Instantiate a Flag object
-    Use flags instead of tags if you need the ability to remove tags in external systems.
-
-    `Args:`
-        tag: str
-            Tag string; convention is either a simple string
-            or a string with a prefix separated by a colon, e.g., “DONOR:GRASSROOTS”
-        action: str
-            What action to take with this flag in destination systems. One of “ADD”, “REMOVE”.
-    """
-    def __init__(self, tag, action):
-        if action != "ADD" and action != "REMOVE":
-            raise Exception("unknown action")
-
-        self.tag = tag
-        self.action = action
 
 
 class Score(object):
