@@ -48,7 +48,7 @@ You can upsert Person data by directly using a Person object:
    source = "MY_ORG_NAME"
    bluelink.upsert_person(source, person)
 
-You can bulk upsert person data via a Parsons Table by providing a function that takes a row and outputs a person:
+You can bulk upsert person data via a Parsons Table by providing a function that takes a row and outputs a Person:
 
 .. code-block:: python
 
