@@ -16,7 +16,8 @@ hello@bluelink.org to ask us to add it.
       If you don't have a Bluelink account please complete the `form <https://bluelink.org/#form>`_ on our website or email us at hello@bluelink.org.
       To get connection credentials select or ask an account administrator to select `Bluelink Webhook <https://app.bluelink.org/bluelink-webhook-integration>`_
       from the apps menu. The credentials are automatically embedded into a one time secret link in case they need to be sent to you.
-      Open the link to access the password that you will then....
+      Open the link to access the user and password, that you will then either pass directly to the Bluelink connector as arguments, 
+      or set them as environment variables.
 
 ==========
 Quickstart
