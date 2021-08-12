@@ -11,20 +11,18 @@ API_URL = 'https://api.bluelink.org/webhooks/'
 
 class Bluelink:
     """
-    Instantiate a Bluelink connector
-    Allows for a simple method of inserting Person data to Bluelink via a webhook
+    Instantiate a Bluelink connector.
+    Allows for a simple method of inserting Person data to Bluelink via a webhook.
 
     `Args:`:
         user: str
-            Bluelink webhook user name
+            Bluelink webhook user name.
         password: str
-            Bluelink webhook password
+            Bluelink webhook password.
     """
     def __init__(self, user=None, password=None):
         self.user = check_env.check('BLUELINK_WEBHOOK_USER', user)
         self.password = check_env.check('BLUELINK_WEBHOOK_PASSWORD', password)
-        print(self.user)
-        print(self.password)
         self.headers = {
             "Content-Type": "application/json",
         }
@@ -33,11 +31,10 @@ class Bluelink:
 
     def upsert_person(self, source, person=None):
         """
-        Upsert A person object into Bluelink.
-        For an update:
-            1) The Person object must have at least 1 Identifier in the identifiers list
-            2) If an existing Person record in Bluelink has a matching identifier
-            (same source and id), the record will be updated
+        Upsert a Person object into Bluelink.
+        Rows will update, as opposed to being inserted, if an existing person record in
+        Bluelink has a matching Identifier (same source and id) as the Person object
+        passed into this function.
 
         `Args:`
             source: str
@@ -45,7 +42,7 @@ class Bluelink:
                 your company name.
             person: Person
                 A Person object.
-                Will be inserted to Bluelink, or updated if a matching record is found
+                Will be inserted to Bluelink, or updated if a matching record is found.
         `Returns:`
             int
             An http status code from the http post request to the Bluelink webhook.
@@ -62,21 +59,21 @@ class Bluelink:
     def bulk_upsert_person(self, source, tbl, row_to_person):
         """
         Upsert all rows into Bluelink, using the row_to_person function to
-        transform rows to Person objects
+        transform rows to Person objects.
 
         `Args:`
             source: str
                 String to identify that the data came from your system.
                 For example, your company name.
             tbl: Table
-                A parsons Table that represents people data
+                A parsons Table that represents people data.
             row_to_person: Callable[[dict],Person]
                 A function that takes a dict representation of a row from the passed in tbl
                 and returns a Person object.
 
         `Returns:`
             list[int]
-            A list of https response status codes, one response for each row in the table
+            A list of https response status codes, one response for each row in the table.
         """
         people = Person.from_table(tbl, row_to_person)
         responses = []
